@@ -1,20 +1,20 @@
 package com.example.thecallerapp;
 
+import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 @Entity(tableName = "contacts_table")
 public class Contacts {
-    @PrimaryKey(autoGenerate = true)
+    @PrimaryKey(autoGenerate = false)
+    private int  mob_number;
     private String name;
     private String email;
-    private int mob_number;
 
 
-    public Contacts(String name, String email, int mobNumber) {
+    public Contacts( String name,String email) {
         this.name = name;
         this.email = email;
-        this.mob_number = mobNumber;
     }
 
     public Contacts() {
@@ -32,15 +32,17 @@ public class Contacts {
         return email;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     public int getMob_number() {
         return mob_number;
     }
 
     public void setMob_number(int mob_number) {
         this.mob_number = mob_number;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+
+
     }
 }

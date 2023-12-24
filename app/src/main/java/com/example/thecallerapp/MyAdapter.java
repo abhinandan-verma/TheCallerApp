@@ -37,12 +37,30 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ContactViewHolder>
     @Override
     public void onBindViewHolder(@NonNull ContactViewHolder holder, int position) {
 
+       Contacts currentContact = contactsArrayList.get(position);
+
+       holder.contactListItemBinding.setContact(currentContact);
+
     }
 
     @Override
     public int getItemCount() {
+    //determines the total number of Items in the dataset that will be
+        //displayed in the recyclerView
 
-        Contacts currentCotact = contacts.get(p)
+        if (contactsArrayList != null){
+            return  contactsArrayList.size();
+        }else {
+            return 0;
+        }
+
+    }
+
+    public void setContactsArrayList(ArrayList<Contacts> contactsArrayList) {
+        this.contactsArrayList = contactsArrayList;
+        //notify  the recyclerView that the underlying
+        //dataset has changed
+        notifyDataSetChanged();
     }
 
     class ContactViewHolder extends RecyclerView.ViewHolder{
